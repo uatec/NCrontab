@@ -1,0 +1,37 @@
+-
+    branches:
+        except:
+            - master
+    version: 0.0.{build}
+    build_script:
+    - cmd: >-
+        node patchversions.js
+
+        dotnet restore
+
+        cd NCronTab
+
+        dotnet build
+
+        dotnet pack
+
+        cd ..
+    artifacts:
+    - path: '**/*.nupkg'
+-
+    version: 1.0.{build}
+    build_script:
+    - cmd: >-
+        node patchversions.js
+
+        dotnet restore
+
+        cd RapidRest
+
+        dotnet build
+
+        dotnet pack
+
+        cd ..
+    artifacts:
+    - path: '**/*.nupkg'
